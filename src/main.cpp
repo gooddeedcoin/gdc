@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2018 The Gdc developers
+// Copyright (c) 2014-2018 The Dowin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -39,7 +39,7 @@ using namespace boost;
 using namespace std;
 
 #if defined(NDEBUG)
-# error "Gdc cannot be compiled without assertions."
+# error "Dowin cannot be compiled without assertions."
 #endif
 
 /**
@@ -2038,7 +2038,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("gdc-scriptch");
+    RenameThread("dowin-scriptch");
     scriptcheckqueue.Thread();
 }
 

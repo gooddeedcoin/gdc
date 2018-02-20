@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between gdc-cli and gdcd)
- * of a given instance of the Gdc system.
+ * CBaseChainParams defines the base parameters (shared between dowin-cli and dowind)
+ * of a given instance of the Dowin system.
  */
 class CBaseChainParams
 {
