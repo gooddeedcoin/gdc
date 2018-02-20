@@ -60,15 +60,15 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += dowind
+  bin_PROGRAMS += gdcd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += dowin-cli dowin-tx
+  bin_PROGRAMS += gdc-cli gdc-tx
 endif
 
 .PHONY: FORCE
-# dowin core #
+# gdc core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
@@ -170,7 +170,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between dowind and dowin-qt
+# server: shared between gdcd and gdc-qt
 libbitcoin_server_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
@@ -202,7 +202,7 @@ libbitcoin_server_a_SOURCES = \
   $(JSON_H) \
   $(BITCOIN_CORE_H)
 
-# wallet: shared between dowind and dowin-qt, but only linked
+# wallet: shared between gdcd and gdc-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_SOURCES = \
@@ -278,7 +278,7 @@ univalue_libbitcoin_univalue_a_SOURCES = \
   univalue/univalue_escapes.h \
   univalue/univalue.h
 
-# common: shared between dowind, and dowin-qt and non-server tools
+# common: shared between gdcd, and gdc-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   allocators.cpp \
@@ -333,7 +333,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between dowin-cli and dowin-qt
+# cli: shared between gdc-cli and gdc-qt
 libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
@@ -343,7 +343,7 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-dowind_LDADD = \
+gdcd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UNIVALUE) \
@@ -354,35 +354,35 @@ dowind_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_WALLET
-dowind_LDADD += libbitcoin_wallet.a
+gdcd_LDADD += libbitcoin_wallet.a
 endif
-dowind_SOURCES = dowind.cpp
+gdcd_SOURCES = gdcd.cpp
 #
 
 if TARGET_WINDOWS
-dowind_SOURCES += dowind-res.rc
+gdcd_SOURCES += gdcd-res.rc
 endif
 
-dowind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
-dowind_CPPFLAGS = $(BITCOIN_INCLUDES)
-dowind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+gdcd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+gdcd_CPPFLAGS = $(BITCOIN_INCLUDES)
+gdcd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-# dowin-cli binary #
-dowin_cli_LDADD = \
+# gdc-cli binary #
+gdc_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_UTIL) \
   $(BOOST_LIBS) \
   $(SSL_LIBS) \
   $(CRYPTO_LIBS)
 
-dowin_cli_SOURCES = \
-  dowin-cli.cpp
+gdc_cli_SOURCES = \
+  gdc-cli.cpp
 
-dowin_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
+gdc_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
 
-# dowin-tx binary #
-dowin_tx_LDADD = \
+# gdc-tx binary #
+gdc_tx_LDADD = \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -391,15 +391,15 @@ dowin_tx_LDADD = \
   $(BOOST_LIBS) \
   $(CRYPTO_LIBS)
 
-dowin_tx_SOURCES = dowin-tx.cpp
-dowin_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+gdc_tx_SOURCES = gdc-tx.cpp
+gdc_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
-dowin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+gdc_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dowin_cli_SOURCES += dowin-cli-res.rc
+gdc_cli_SOURCES += gdc-cli-res.rc
 endif
-dowin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+gdc_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h

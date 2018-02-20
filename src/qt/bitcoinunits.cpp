@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2018 The Dowin developers
+// Copyright (c) 2014-2018 The Gdc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,9 +19,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(DOWIN);
-    unitlist.append(mDOWIN);
-    unitlist.append(uDOWIN);
+    unitlist.append(GDC);
+    unitlist.append(mGDC);
+    unitlist.append(uGDC);
     unitlist.append(duffs);
     return unitlist;
 }
@@ -30,9 +30,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case DOWIN:
-    case mDOWIN:
-    case uDOWIN:
+    case GDC:
+    case mGDC:
+    case uGDC:
     case duffs:
         return true;
     default:
@@ -44,9 +44,9 @@ QString BitcoinUnits::id(int unit)
 {
     switch(unit)
     {
-        case DOWIN: return QString("dowin");
-        case mDOWIN: return QString("mdowin");
-        case uDOWIN: return QString::fromUtf8("udowin");
+        case GDC: return QString("gdc");
+        case mGDC: return QString("mgdc");
+        case uGDC: return QString::fromUtf8("ugdc");
         case duffs: return QString("duffs");
         default: return QString("???");
     }
@@ -58,9 +58,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case DOWIN: return QString("DOWIN");
-            case mDOWIN: return QString("mDOWIN");
-            case uDOWIN: return QString::fromUtf8("μDOWIN");
+            case GDC: return QString("GDC");
+            case mGDC: return QString("mGDC");
+            case uGDC: return QString::fromUtf8("μGDC");
             case duffs: return QString("duffs");
             default: return QString("???");
         }
@@ -69,9 +69,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case DOWIN: return QString("tDOWIN");
-            case mDOWIN: return QString("mtDOWIN");
-            case uDOWIN: return QString::fromUtf8("μtDOWIN");
+            case GDC: return QString("tGDC");
+            case mGDC: return QString("mtGDC");
+            case uGDC: return QString::fromUtf8("μtGDC");
             case duffs: return QString("tduffs");
             default: return QString("???");
         }
@@ -84,10 +84,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case DOWIN: return QString("Dowin");
-            case mDOWIN: return QString("Milli-Dowin (1 / 1" THIN_SP_UTF8 "000)");
-            case uDOWIN: return QString("Micro-Dowin (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-Dowin (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case GDC: return QString("Gdc");
+            case mGDC: return QString("Milli-Gdc (1 / 1" THIN_SP_UTF8 "000)");
+            case uGDC: return QString("Micro-Gdc (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-Gdc (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -95,10 +95,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case DOWIN: return QString("TestDowins");
-            case mDOWIN: return QString("Milli-TestDowin (1 / 1" THIN_SP_UTF8 "000)");
-            case uDOWIN: return QString("Micro-TestDowin (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-TestDowin (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case GDC: return QString("TestGdcs");
+            case mGDC: return QString("Milli-TestGdc (1 / 1" THIN_SP_UTF8 "000)");
+            case uGDC: return QString("Micro-TestGdc (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-TestGdc (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -108,9 +108,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case DOWIN:  return 100000000;
-    case mDOWIN: return 100000;
-    case uDOWIN: return 100;
+    case GDC:  return 100000000;
+    case mGDC: return 100000;
+    case uGDC: return 100;
     case duffs: return 1;
     default:   return 100000000;
     }
@@ -120,9 +120,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case DOWIN: return 8;
-    case mDOWIN: return 5;
-    case uDOWIN: return 2;
+    case GDC: return 8;
+    case mGDC: return 5;
+    case uGDC: return 2;
     case duffs: return 0;
     default: return 0;
     }

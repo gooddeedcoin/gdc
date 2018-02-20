@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2018 The Dowin developers
+// Copyright (c) 2014-2018 The Gdc developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -104,14 +104,14 @@ public:
         pchMessageStart[3] = 0x4f;
         vAlertPubKey = ParseHex("0451c278134675546a1a9375682686279d129e11ce6d0e467da10a34abaa90fa3c7e9d76436db4a56ccedfbb894d94507d8032da373bbda2515214c38e181ba065");
         nDefaultPort = 9887;
-        bnProofOfWorkLimit = ~uint256(0) >> 20;  // Dowin starting difficulty is 1 / 2^12
+        bnProofOfWorkLimit = ~uint256(0) >> 20;  // Gdc starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000; 
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 60 * 60; // Dowin: 60 minutes
-        nTargetSpacing = 2.5 * 60; // Dowin: 2.5 minutes
+        nTargetTimespan = 60 * 60; // Gdc: 60 minutes
+        nTargetSpacing = 2.5 * 60; // Gdc: 2.5 minutes
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -145,12 +145,12 @@ public:
        // vSeeds.push_back(CDNSSeedData("80.211.182.137", "80.211.182.137"));
         vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = list_of( 30);                    // Dowin addresses start with 'D'
-        base58Prefixes[SCRIPT_ADDRESS] = list_of( 16);                    // Dowin script addresses start with '7'
-        base58Prefixes[SECRET_KEY] =     list_of(204);                    // Dowin private keys start with '7' or 'X'
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0xFE)(0x52)(0xF8); // Dowin BIP32 pubkeys start with 'drkv'
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0xFE)(0x52)(0xCC); // Dowin BIP32 prvkeys start with 'drkp'
-        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000005);             // Dowin BIP44 coin type is '5'
+        base58Prefixes[PUBKEY_ADDRESS] = list_of( 30);                    // Gdc addresses start with 'D'
+        base58Prefixes[SCRIPT_ADDRESS] = list_of( 16);                    // Gdc script addresses start with '7'
+        base58Prefixes[SECRET_KEY] =     list_of(204);                    // Gdc private keys start with '7' or 'X'
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0xFE)(0x52)(0xF8); // Gdc BIP32 pubkeys start with 'drkv'
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0xFE)(0x52)(0xCC); // Gdc BIP32 prvkeys start with 'drkp'
+        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000005);             // Gdc BIP44 coin type is '5'
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
@@ -195,8 +195,8 @@ public:
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 24 * 60 * 60; // Dowin: 1 day
-        nTargetSpacing = 2.5 * 60; // Dowin: 2.5 minutes
+        nTargetTimespan = 24 * 60 * 60; // Gdc: 1 day
+        nTargetSpacing = 2.5 * 60; // Gdc: 2.5 minutes
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1518199202;
@@ -209,12 +209,12 @@ public:
         vSeeds.clear();
         
 
-        base58Prefixes[PUBKEY_ADDRESS] = list_of(139);                    // Testnet dowin addresses start with 'x' or 'y'
-        base58Prefixes[SCRIPT_ADDRESS] = list_of( 19);                    // Testnet dowin script addresses start with '8' or '9'
+        base58Prefixes[PUBKEY_ADDRESS] = list_of(139);                    // Testnet gdc addresses start with 'x' or 'y'
+        base58Prefixes[SCRIPT_ADDRESS] = list_of( 19);                    // Testnet gdc script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY]     = list_of(239);                    // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x3a)(0x80)(0x61)(0xa0); // Testnet dowin BIP32 pubkeys start with 'DRKV'
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x3a)(0x80)(0x58)(0x37); // Testnet dowin BIP32 prvkeys start with 'DRKP'
-        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000001);             // Testnet dowin BIP44 coin type is '5' (All coin's testnet default)
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x3a)(0x80)(0x61)(0xa0); // Testnet gdc BIP32 pubkeys start with 'DRKV'
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x3a)(0x80)(0x58)(0x37); // Testnet gdc BIP32 prvkeys start with 'DRKP'
+        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000001);             // Testnet gdc BIP44 coin type is '5' (All coin's testnet default)
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
@@ -256,8 +256,8 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 24 * 60 * 60; // Dowin: 1 day
-        nTargetSpacing = 2.5 * 60; // Dowin: 2.5 minutes
+        nTargetTimespan = 24 * 60 * 60; // Gdc: 1 day
+        nTargetSpacing = 2.5 * 60; // Gdc: 2.5 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1518199203;
         genesis.nBits = 0x207fffff;
